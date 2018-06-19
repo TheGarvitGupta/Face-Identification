@@ -69,4 +69,4 @@ def detect(imageURL):
 
 	return name[personId], confidence
 
-print(detect("C:\\Users\\garvit\\Downloads\\Face Identification\\Screenshots\\scr_1.png"))
+# print(detect("C:\\Users\\garvit\\Downloads\\Face Identification\\Screenshots\\scr_1.png"))
