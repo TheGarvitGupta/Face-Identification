@@ -1,6 +1,6 @@
 # Face Identification
 
-Fece tracking and recognition using OpenCV and Microsoft Azure's Face APIs. The API request is sent only when a new face is detected. When a face is detected, a tracker is associated with it until the tracking confidence drops below a threshold (configurable).
+Face tracking and recognition using OpenCV and Microsoft Azure's Face APIs. The API request is sent only when a new face is detected. When a face is detected, a tracker is associated with it until the tracking confidence drops below a threshold (configurable).
 
 ## Installation
 The `requirements.txt` file contains much more than the strict requirements to run this app, but saves time to just install everything at once.
