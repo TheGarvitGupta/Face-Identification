@@ -35,12 +35,15 @@ This script internally imports `train_faces_detect_face_5.py` which takes the ad
 The `PersonGroup` contained one image each of 6 people including `Garvit` and `Obama`. With only one image, the classifier returns a high confidence level.
 
 ![Screenshot 1](https://github.com/TheGarvitGupta/Face-Identification/blob/master/Screenshots/scr_1.png "Screenshot 1")
+
 Screenshot 1
 
 ![Screenshot 2](https://github.com/TheGarvitGupta/Face-Identification/blob/master/Screenshots/scr_2.png "Screenshot 2")
+
 Screenshot 2
 
 # Reference
 
-Tracking code forked from: https://github.com/gdiepen/face-recognition
-Blog Link: https://www.guidodiepen.nl/2017/02/detecting-and-tracking-a-face-with-python-and-opencv/
+* Tracking code forked from: https://github.com/gdiepen/face-recognition
+
+* Blog Link: https://www.guidodiepen.nl/2017/02/detecting-and-tracking-a-face-with-python-and-opencv/
