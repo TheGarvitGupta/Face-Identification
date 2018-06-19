@@ -6,7 +6,7 @@ Face tracking and recognition using OpenCV and Microsoft Azure's Face APIs. The 
 The `requirements.txt` file contains much more than the strict requirements to run this app, but saves time to just install everything at once.
 
 ### Setup
-Run these scripts sequentialy. You will need to appropriately edit these scripts to include the correct Face API subscription key, names, and images of the people.
+Run these scripts sequentially. You will need to appropriately edit these scripts to include the correct Face API subscription key, names, and images of the people.
 
 ```sh
 # Create a group
@@ -15,7 +15,7 @@ python Azure/train_faces_create_person_group_1.py
 # Add people to the group
 python Azure/train_faces_add_person_2.py
 
-# Add faces for the poeple
+# Add faces for the people
 python Azure/train_faces_add_face_3.py
 
 # Train the API to learn the faces and associate the features with the people
