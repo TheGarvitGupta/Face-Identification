@@ -18,7 +18,7 @@ python Azure/train_faces_add_person_2.py
 # Add faces for the poeple
 python Azure/train_faces_add_face_3.py
 
-# Train the API to learn the faces and associate the features wiht the people
+# Train the API to learn the faces and associate the features with the people
 python Azure/train_faces_train_4.py
 ```
 
