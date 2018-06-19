@@ -25,7 +25,7 @@ python Azure/train_faces_train_4.py
 ### Execution
 To run the detector:
 ```sh
-python demo - detect and track.py
+python "demo - detect and track.py"
 ```
 
 This script internally imports `train_faces_detect_face_5.py` which takes the address of a local image on the disk and returns the `name`, `confidence` of the person with highest score.
