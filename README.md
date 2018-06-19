@@ -32,3 +32,5 @@ This script internally imports `train_faces_detect_face_5.py` which takes the ad
 
 # Screenshots
 
+![Screenshot 1](https://github.com/TheGarvitGupta/Face-Identification/blob/master/Screenshots/scr_1.png "Screenshot 1")
+![Screenshot 2](https://github.com/TheGarvitGupta/Face-Identification/blob/master/Screenshots/scr_2.png "Screenshot 2")
