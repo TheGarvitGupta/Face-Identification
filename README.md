@@ -42,5 +42,5 @@ Screenshot 2
 
 # Reference
 
-Tracking code forked from: https://www.guidodiepen.nl/2017/02/detecting-and-tracking-a-face-with-python-and-opencv/
-GitHub Link: https://github.com/gdiepen/face-recognition
+Tracking code forked from: https://github.com/gdiepen/face-recognition
+Blog Link: https://www.guidodiepen.nl/2017/02/detecting-and-tracking-a-face-with-python-and-opencv/
