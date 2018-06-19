@@ -1,10 +1,11 @@
 ########### Python 2.7 #############
 import httplib, urllib, base64
+from keys import SubscriptionKey
 
 headers = {
     # Request headers
     'Content-Type': 'application/json',
-    'Ocp-Apim-Subscription-Key': '35f24aa856df408691c729b70e5f9e35',
+    'Ocp-Apim-Subscription-Key': SubscriptionKey,
 }
 
 name = {'90b7d3f9-4fda-4df5-a847-a954d2677bab': 'Obama', '8bcd26d3-9931-480a-ad41-689566562d4e': 'Nithin', '7eacbf97-db79-4144-af03-2669b4028890': 'Brian', '4f4be214-ff3e-4917-946e-33ba51f6c285': 'Wonkap', '1a334200-950c-4c80-b98d-38caacf25f68': 'Emmanuel', '1eb50deb-7fd7-42c3-83a5-794af237af69': 'Garvit'}

@@ -2,6 +2,7 @@ import json, urllib, requests, httplib, base64
 
 from pprint import pprint
 from os.path import expanduser
+from keys import SubscriptionKey
 
 def detect(imageURL):
 
@@ -9,7 +10,7 @@ def detect(imageURL):
 
 	headers = {
 	    'Content-Type': 'application/octet-stream',
-	    'Ocp-Apim-Subscription-Key': '35f24aa856df408691c729b70e5f9e35',
+	    'Ocp-Apim-Subscription-Key': SubscriptionKey
 	}
 
 	params = urllib.urlencode({
@@ -36,7 +37,7 @@ def detect(imageURL):
 	headers = {
 	    # Request headers
 	    'Content-Type': 'application/json',
-	    'Ocp-Apim-Subscription-Key': '35f24aa856df408691c729b70e5f9e35',
+	    'Ocp-Apim-Subscription-Key': SubscriptionKey
 	}
 
 	params = urllib.urlencode({
@@ -67,3 +68,5 @@ def detect(imageURL):
 	print("Identified:", name[personId], confidence)	
 
 	return name[personId], confidence
+
+print(detect("C:\\Users\\garvit\\Downloads\\Face Identification\\Screenshots\\scr_1.png"))
