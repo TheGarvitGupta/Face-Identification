@@ -30,7 +30,7 @@ python "demo - detect and track.py"
 
 This script internally imports `train_faces_detect_face_5.py` which takes the address of a local image on the disk and returns the `name`, `confidence` of the person with highest score.
 
-# Screenshots
+## Screenshots
 
 The `PersonGroup` contained one image each of 6 people including `Garvit` and `Obama`. With only one image, the classifier returns a high confidence level.
 
@@ -42,7 +42,7 @@ Screenshot 1
 
 Screenshot 2
 
-# Reference
+## References
 
 * Tracking code forked from: https://github.com/gdiepen/face-recognition
 * Blog Link: https://www.guidodiepen.nl/2017/02/detecting-and-tracking-a-face-with-python-and-opencv/

@@ -8,7 +8,7 @@ headers = {
     'Ocp-Apim-Subscription-Key': SubscriptionKey,
 }
 
-personGroupId = "100"
+personGroupId = "0"
 
 params = urllib.urlencode({
 })

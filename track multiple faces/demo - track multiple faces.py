@@ -24,7 +24,7 @@ OUTPUT_SIZE_HEIGHT = 600
 
 #We are not doing really face recognition
 def doRecognizePerson(faceNames, fid):
-    time.sleep(2)
+    
     faceNames[ fid ] = "Person " + str(fid)
 
 

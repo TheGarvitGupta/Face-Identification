@@ -1,0 +1,22 @@
+-	Dominant Face:
+	-	Step in first in the frame
+	-	Tiebreaker: Prefers larger face
+
+-	Detection:
+	-	Library: OpenCV
+	-	Pre-trained faceCascade (Haar feature-based cascade)
+	-	Runs in a while loop if no face is being tracked
+
+-	Tracking:
+	-	Library: dlib
+	-	When face is detected, a correlation tracker is associated with the frame section to update the position
+
+-	Recognition:
+	-	Library: Azure (API Call)
+	-	When frame is detected for the first time (or after losing the tracking), the section of the frame with the face is cropped and uploaded to Azure.
+		Azure returns with the person id and the confidence level.
+	-	Confidence switch:
+		-	>80: Very high confidence
+		-	>70: High confidence
+		-	>50: Moderate confidence
+		-	>40: Low confidence (name not shown)

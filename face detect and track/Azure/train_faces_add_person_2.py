@@ -3,6 +3,23 @@
 ########### Python 2.7 #############
 import httplib, urllib, base64, json
 from keys import SubscriptionKey
+import os
+import time
+
+# The absolute path to the folder that contains a folder for each person
+folderPath = "C:/Users/garvit/Desktop/Extract Images/Mountain View - 520"
+people = os.walk(folderPath)
+people = sorted([person for person in people][0][1])
+
+personGroupId = "0"
+databasePath = "people_database/"
+
+if not os.path.exists(databasePath):
+    os.makedirs(databasePath)
+
+print("Found " + str(len(people)) + " people: " + str(people))
+
+file = open(databasePath + '%d.txt' % time.time(), 'w+')
 
 headers = {
     # Request headers
@@ -13,12 +30,12 @@ headers = {
 params = urllib.urlencode({
 })
 
-people = ["Garvit", "Emmanuel", "Wonkap", "Brian", "Nithin", "Obama"]
 ids = []
 
 for person in people:
+
+	print ("Processing", person)
 	
-	personGroupId = "100"
 	body = str({
 	    "name": person
 	})
@@ -34,9 +51,13 @@ for person in people:
 	except Exception as e:
 	    print("[Errno {0}] {1}".format(e.errno, e.strerror))
 
-dict = {}
+peopleDict = {}
 
 for i, j in zip(people, ids):
-	dict[j] = i
+	peopleDict[j] = i
 
-print(dict)
+file.write(str(peopleDict))
+file.close()
+
+print("Completed:")
+print(peopleDict)

@@ -10,6 +10,8 @@ import time
 import sys
 
 import json, urllib, requests, httplib, base64
+import numpy as np
+from PIL import Image
 
 from pprint import pprint
 from os.path import expanduser
@@ -31,35 +33,64 @@ PERSON_NAME = "Identifying person..."
 IMAGE_URL = ""
 trackingFace = False
 
+def readImage():
+    h = 648
+    w = 1096
+
+    # h = 720
+    # w = 1280
+
+    file = open('G:/rgbFrame.bin', 'r+')
+    x = np.fromfile(file, dtype='uint8')
+
+    if x.shape[0] != h*w*3:
+        return (0, False)
+
+    imageArray = x.reshape((h,w,3))
+
+    imageArray = np.flip(imageArray, axis=1)
+    imageArray = np.flip(imageArray, axis=2)
+
+    # im = Image.fromarray(imageArray)
+    file.close()
+    return (imageArray, True)
+    
+def writeImage(image):
+    image = np.flip(image, axis=1)
+    image = np.flip(image, axis=2)
+    image = image.reshape(image.shape[0] * image.shape[1] * image.shape[2])
+    output_file = open('G:/rgbFrameRendered.bin', 'wb')
+    # image.tofile(output_file)
+    # output_file.close()
+
+    newFileByteArray = bytearray(image)
+    output_file.write(newFileByteArray)
+    output_file.close()
+
 def getName():
     global PERSON_NAME, trackingFace
 
     print("---> Reaching out to Azure to identify person...")
-    print("Calling detect with", IMAGE_URL)
+    # print("Calling detect with", IMAGE_URL)
     
     try:
         name, confidence = detect(IMAGE_URL)
         PERSON_NAME = str(name) + " (" + str(confidence) + ")"
-    except IndexError:
+    except:
         PERSON_NAME = "Identifying person..."
         global trackingFace
         trackingFace = False
 
 def detectAndTrackLargestFace():
     #Open the first webcame device
-    capture = cv2.VideoCapture(0)
+    # capture = cv2.VideoCapture(0)
 
     #Create two opencv named windows
-    cv2.namedWindow("base-image", cv2.WINDOW_AUTOSIZE)
-    cv2.namedWindow("result-image", cv2.WINDOW_AUTOSIZE)
-
+    
     #Position the windows next to eachother
-    cv2.moveWindow("base-image",0,100)
-    cv2.moveWindow("result-image",400,100)
-
+    
     #Start the window thread for the two windows we are using
-    cv2.startWindowThread()
-
+    
     #Create the tracker we will use
     tracker = dlib.correlation_tracker()
 
@@ -75,11 +106,18 @@ def detectAndTrackLargestFace():
     try:
         while True:
             #Retrieve the latest image from the webcam
-            rc,fullSizeBaseImage = capture.read()
+            # rc,fullSizeBaseImage = capture.read()
 
             #Resize the image to 320x240
             # baseImage = cv2.resize( fullSizeBaseImage, ( 320, 240))
-            baseImage = fullSizeBaseImage
+            # baseImage = fullSizeBaseImage
+            fullBaseImage, truth = readImage()
+
+            if truth == False:
+                print("Fault -- fiber.exe sent a corrupted frame")
+                continue
+            else:
+                baseImage = cv2.resize(fullBaseImage, (1096, 648))
 
 
             #Check if a key was pressed and if it was Q, then destroy all
@@ -169,8 +207,6 @@ def detectAndTrackLargestFace():
                     cv2.imwrite("face-temp.jpg", face_image)
                     IMAGE_URL = "face-temp.jpg"
 
-                    print("Set", IMAGE_URL)
-                    print("Calling getName")
                     threading.Thread(target=getName).start()
 
                 else:
@@ -201,7 +237,7 @@ def detectAndTrackLargestFace():
                                                 rectangleColor ,2)
 
                     font = cv2.FONT_HERSHEY_SIMPLEX
-                    cv2.putText(resultImage, PERSON_NAME,(t_x, t_y + t_h + 10), font, 0.5,(255,255,255),1,cv2.LINE_AA)
+                    cv2.putText(resultImage, PERSON_NAME,(t_x, t_y + t_h + 28), font, 1,(255,255,255),1,cv2.LINE_AA)
 
                 else:
                     #If the quality of the tracking update is not
@@ -229,8 +265,8 @@ def detectAndTrackLargestFace():
             largeResult = resultImage
 
             #Finally, we want to show the images on the screen
-            cv2.imshow("base-image", baseImage)
-            cv2.imshow("result-image", largeResult)
+            writeImage(largeResult)
+            
 
 
 

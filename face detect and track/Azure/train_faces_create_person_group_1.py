@@ -12,10 +12,10 @@ headers = {
 params = urllib.urlencode({
 })
 
-personGroupId = "100"
+personGroupId = "0"
 body = str({
-    "name": "100",
-    "userData": "Database of faces of some people at BlueJeans, for a prototype of facial recognition in a video"
+    "name": "0",
+    "userData": "Experimental Database"
 })
 
 try:
